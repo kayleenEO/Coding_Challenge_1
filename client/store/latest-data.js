@@ -1,42 +1,62 @@
 import axios from 'axios'
 
 //ACTION TYPES
-const GET_DATA = 'GET_DATA'
-const GET_PROGRAM_PERCENTAGES = 'GET_PROGRAM_PERCENTAGES'
-const GET_STUDENT_BY_ETHNICITY = 'GET_STUDENT_BY_ETHNICITY'
-const GET_COST_BY_INCOME_LEVEL = 'GET_COST_BY_INCOME_LEVEL'
-const GET_MEDIAN_DEBT_BY_INCOME = 'GET_MEDIAN_DEBT_BY_INCOME'
+const REQUEST_DATA = 'REQUEST_DATA'
+const RECEIVE_DATA = 'RECEIVE_DATA'
 
 //ACTION CREATORS
-const gotData = data => ({
-  type: GET_DATA,
-  data
+
+const requestData = () => ({
+  type: REQUEST_DATA
 })
-const gotProgramPercentages = () => ({type: GET_PROGRAM_PERCENTAGES})
-const gotStudentByEthnicity = () => ({type: GET_STUDENT_BY_ETHNICITY})
-const gotCost = () => ({type: GET_COST_BY_INCOME_LEVEL})
-const gotMedianDebt = () => ({type: GET_MEDIAN_DEBT_BY_INCOME})
+const receiveData = data => ({type: RECEIVE_DATA, data})
 
 //THUNK CREATORS
-export const fetchData = () => dispatch => {
-  axios
-    .get(
-      'https://api.data.gov/ed/collegescorecard/v1/schools?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=HMAlV7xizKvwY2aSKPTzYjAm74g7EgbEt11GifVK'
-    )
-    .then(({data}) => dispatch(gotData(data)))
-    .catch(error => console.error(error))
+
+const API_KEY = 'HMAlV7xizKvwY2aSKPTzYjAm74g7EgbEt11GifVK'
+const COMPOSED_URL = `https://api.data.gov/ed/collegescorecard/v1/schools?school.operating=1&2015.academics.program_available.assoc_or_bachelors=true&2015.student.size__range=1..&school.degrees_awarded.predominant__range=1..3&school.degrees_awarded.highest__range=2..4&id=240444&api_key=${API_KEY}`
+
+export const fetchData = () => async dispatch => {
+  dispatch(requestData())
+  try {
+    const {data} = await axios.get(COMPOSED_URL)
+    dispatch(receiveData(data || []))
+  } catch (error) {
+    console.error(error)
+  }
 }
-// (response => response.json)
 
 //INITIAL STATE
-const initialState = {}
+const initialState = {
+  isLoading: false,
+  all: []
+}
 
 //REDUCERS
-export default function(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_DATA:
-      return {...state, latest: action.results.latest}
+    case REQUEST_DATA:
+      return {
+        ...state,
+        isLoading: true
+      }
+    case RECEIVE_DATA:
+      return {
+        ...state,
+        isLoading: false,
+        all: action.data
+      }
     default:
       return state
   }
 }
+
+// const GET_PROGRAM_PERCENTAGES = 'GET_PROGRAM_PERCENTAGES'
+// const GET_STUDENT_BY_ETHNICITY = 'GET_STUDENT_BY_ETHNICITY'
+// const GET_COST_BY_INCOME_LEVEL = 'GET_COST_BY_INCOME_LEVEL'
+// const GET_MEDIAN_DEBT_BY_INCOME = 'GET_MEDIAN_DEBT_BY_INCOME'
+
+// const gotProgramPercentages = () => ({type: GET_PROGRAM_PERCENTAGES})
+// const gotStudentByEthnicity = () => ({type: GET_STUDENT_BY_ETHNICITY})
+// const gotCost = () => ({type: GET_COST_BY_INCOME_LEVEL})
+// const gotMedianDebt = () => ({type: GET_MEDIAN_DEBT_BY_INCOME})
