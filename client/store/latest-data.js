@@ -35,7 +35,7 @@ const initialState = {}
 export default function(state = initialState, action) {
   switch (action.type) {
     case GET_DATA:
-      return {}
+      return {...state, latest: action.results.latest}
     default:
       return state
   }
