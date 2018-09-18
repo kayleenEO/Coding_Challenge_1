@@ -7,8 +7,7 @@ import {
   getMedianDebtByIncome
 } from '../store'
 import {connect} from 'react-redux'
-import PieChart from './pie-chart'
-import BarChart from './bar-chart'
+import {Footer, PieChart, BarChart} from './index'
 
 class Homepage extends Component {
   componentDidMount() {
@@ -82,6 +81,7 @@ class Homepage extends Component {
                 </div>
               </div>
             </section>
+            <Footer />
           </div>
         )}
       </div>
