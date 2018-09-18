@@ -72,7 +72,46 @@ const initialState = {
         }
       },
       academics: {
-        program_percentage: []
+        program_percentage: {
+          education: 0,
+          mathematics: 0,
+          business_marketing: 0,
+          communications_technology: 0,
+          language: 0,
+          visual_performing: 0,
+          engineering_technology: 0,
+          parks_recreation_fitness: 0,
+          agriculture: 0,
+          security_law_enforcement: 0,
+          computer: 0,
+          precision_production: 0,
+          humanities: 0,
+          library: 0,
+          psychology: 0,
+          social_science: 0,
+          legal: 0,
+          english: 0,
+          construction: 0,
+          military: 0,
+          communication: 0,
+          public_administration_social_service: 0,
+          architecture: 0,
+          ethnic_cultural_gender: 0,
+          resources: 0,
+          health: 0,
+          engineering: 0,
+          history: 0,
+          theology_religious_vocation: 0,
+          transportation: 0,
+          physical_science: 0,
+          science_technology: 0,
+          biological: 0,
+          family_consumer_science: 0,
+          philosophy_religious: 0,
+          personal_culinary: 0,
+          multidiscipline: 0,
+          mechanic_repair_technology: 0
+        }
       },
       aid: {
         median_debt: {
@@ -100,6 +139,20 @@ export default (state = initialState, action) => {
     default:
       return state
   }
+}
+
+//SELECTORS
+export const getProgramPercentagePieChart = state => {
+  const percentage = state.data.all.latest.academics.program_percentage
+  return Object.keys(percentage).reduce((result, percent) => {
+    if (percentage[percent] !== 0) {
+      result.push({
+        x: percent,
+        y: percentage[percent]
+      })
+    }
+    return result
+  }, [])
 }
 
 export const getEthnicityPieChart = state => {

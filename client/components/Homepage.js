@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
-import {fetchData, getEthnicityPieChart} from '../store'
+import {
+  fetchData,
+  getEthnicityPieChart,
+  getProgramPercentagePieChart
+} from '../store'
 import {connect} from 'react-redux'
 import PieChart from './program-data-chart'
 
@@ -8,7 +12,12 @@ class Homepage extends Component {
     this.props.getData()
   }
   render() {
-    const {data, isLoading, ethnicityPieChartData} = this.props
+    const {
+      data,
+      isLoading,
+      ethnicityPieChartData,
+      programPercentagePieChartData
+    } = this.props
     return (
       <div>
         <h1>Welcome to the Homepage</h1>
@@ -22,6 +31,9 @@ class Homepage extends Component {
             <br />
             <br />
             <PieChart data={ethnicityPieChartData} />
+            <br />
+            <br />
+            <PieChart data={programPercentagePieChartData} />
           </div>
         )}
       </div>
@@ -32,7 +44,8 @@ class Homepage extends Component {
 const mapState = state => ({
   data: state.data.all,
   isLoading: state.data.isLoading,
-  ethnicityPieChartData: getEthnicityPieChart(state)
+  ethnicityPieChartData: getEthnicityPieChart(state),
+  programPercentagePieChartData: getProgramPercentagePieChart(state)
 })
 
 const mapDispatch = dispatch => ({
