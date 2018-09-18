@@ -27,25 +27,49 @@ class Homepage extends Component {
       <div>
         {!isLoading && (
           <div>
-            <h1>Welcome to the Homepage</h1>
-            <h2>Name: {data.school.name}</h2>
-            <h2>Website: {data.school.school_url}</h2>
-            <h2>City: {data.school.city}</h2>
-            <h2>State: {data.school.state}</h2>
-            <h2>Zip: {data.school.zip}</h2>
-            <h2>Total # of Students: {data.latest.student.size}</h2>
-            <br />
-            <br />
-            <PieChart data={ethnicityPieChartData} />
-            <br />
-            <br />
-            <PieChart data={programPercentagePieChartData} />
-            <br />
-            <br />
-            <BarChart data={costByIncomeData} />
-            <br />
-            <br />
-            <BarChart data={medianDebtByIncome} />
+            <section
+              id="home-rel"
+              className="hero is-primary is-medium is-bold"
+            >
+              <div className="hero-body">
+                <div id="hero-title" className="container body-center">
+                  <div className="columns">
+                    <div className="column">
+                      <br />
+                      <br />
+                      <br />
+                      <h1 className="title">{data.school.name}</h1>
+                      <h2 className="subtitle">{data.school.school_url}</h2>
+                      <h2 className="address">{`${data.school.city}, ${
+                        data.school.state
+                      } ${data.school.zip}`}</h2>
+                      <h2>
+                        {data.latest.student.size} undergraduates enrolled
+                      </h2>
+                    </div>
+                    <div className="column is-centered">
+                      <PieChart data={programPercentagePieChartData} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section id="home-bottom-section" className="section">
+              <div className="container">
+                <div className="columns">
+                  <div className="column box">
+                    <BarChart data={medianDebtByIncome} />
+                  </div>
+                  <div className="column box">
+                    <PieChart data={ethnicityPieChartData} />
+                  </div>
+                  <div className="column box">
+                    <BarChart data={costByIncomeData} />
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         )}
       </div>
