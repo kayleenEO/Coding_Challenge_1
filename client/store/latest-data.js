@@ -36,6 +36,49 @@ const initialState = {
       city: '',
       state: '',
       zip: ''
+    },
+    latest: {
+      cost: {
+        net_price: {
+          public: {
+            by_income_level: []
+          }
+        }
+      },
+      student: {
+        demographics: {
+          race_ethnicity: {
+            nhpi: 0,
+            non_resident_alien: 0,
+            black_2000: 0,
+            aian_2000: 0,
+            hispanic_prior_2009: 0,
+            black: 0,
+            asian: 0,
+            api_2000: 0,
+            hispanic_2000: 0,
+            unknown_2000: 0,
+            unknown: 0,
+            white_non_hispanic: 0,
+            black_non_hispanic: 0,
+            asian_pacific_islander: 0,
+            white: 0,
+            two_or_more: 0,
+            hispanic: 0,
+            aian: 0,
+            aian_prior_2009: 0,
+            white_2000: 0
+          }
+        }
+      },
+      academics: {
+        program_percentage: []
+      },
+      aid: {
+        median_debt: {
+          income: []
+        }
+      }
     }
   }
 }
@@ -59,12 +102,27 @@ export default (state = initialState, action) => {
   }
 }
 
-// const GET_PROGRAM_PERCENTAGES = 'GET_PROGRAM_PERCENTAGES'
-// const GET_STUDENT_BY_ETHNICITY = 'GET_STUDENT_BY_ETHNICITY'
-// const GET_COST_BY_INCOME_LEVEL = 'GET_COST_BY_INCOME_LEVEL'
-// const GET_MEDIAN_DEBT_BY_INCOME = 'GET_MEDIAN_DEBT_BY_INCOME'
+export const getEthnicityPieChart = state => {
+  const demographics = state.data.all.latest.student.demographics.race_ethnicity
+  return Object.keys(demographics).reduce((result, demo) => {
+    if (demographics[demo] !== 0) {
+      result.push({
+        x: demo,
+        y: demographics[demo]
+      })
+    }
+    return result
+  }, [])
+}
 
-// const gotProgramPercentages = () => ({type: GET_PROGRAM_PERCENTAGES})
-// const gotStudentByEthnicity = () => ({type: GET_STUDENT_BY_ETHNICITY})
-// const gotCost = () => ({type: GET_COST_BY_INCOME_LEVEL})
-// const gotMedianDebt = () => ({type: GET_MEDIAN_DEBT_BY_INCOME})
+// export const getEthnicityPieChart = state => {
+//   const demographics = state.data.all.latest.student.demographics.race_ethnicity
+//   return Object.keys(demographics).map(demo => {
+//     if (demographics[demo] !== 0) {
+//       return {
+//         x: demo,
+//         y: demographics[demo]
+//       }
+//     }
+//   })
+// }
