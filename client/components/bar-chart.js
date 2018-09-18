@@ -10,7 +10,8 @@ const BarChart = ({data}) => {
         <VictoryBar
           barRatio={0.8}
           style={{
-            data: {fill: '#ea443c'}
+            data: {fill: '#ea443c'},
+            labels: {fontSize: 12}
           }}
           data={barData}
         />
