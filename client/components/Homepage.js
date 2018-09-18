@@ -3,10 +3,11 @@ import {
   fetchData,
   getEthnicityPieChart,
   getProgramPercentagePieChart,
-  getCostByIncomeChart
+  getCostByIncomeChart,
+  getMedianDebtByIncome
 } from '../store'
 import {connect} from 'react-redux'
-import PieChart from './program-data-chart'
+import PieChart from './pie-chart'
 import BarChart from './bar-chart'
 
 class Homepage extends Component {
@@ -19,13 +20,14 @@ class Homepage extends Component {
       isLoading,
       ethnicityPieChartData,
       programPercentagePieChartData,
-      costByIncomeData
+      costByIncomeData,
+      medianDebtByIncome
     } = this.props
     return (
       <div>
-        <h1>Welcome to the Homepage</h1>
         {!isLoading && (
           <div>
+            <h1>Welcome to the Homepage</h1>
             <h2>Name: {data.school.name}</h2>
             <h2>Website: {data.school.school_url}</h2>
             <h2>City: {data.school.city}</h2>
@@ -40,6 +42,9 @@ class Homepage extends Component {
             <br />
             <br />
             <BarChart data={costByIncomeData} />
+            <br />
+            <br />
+            <BarChart data={medianDebtByIncome} />
           </div>
         )}
       </div>
@@ -52,7 +57,8 @@ const mapState = state => ({
   isLoading: state.data.isLoading,
   ethnicityPieChartData: getEthnicityPieChart(state),
   programPercentagePieChartData: getProgramPercentagePieChart(state),
-  costByIncomeData: getCostByIncomeChart(state)
+  costByIncomeData: getCostByIncomeChart(state),
+  medianDebtByIncome: getMedianDebtByIncome(state)
 })
 
 const mapDispatch = dispatch => ({

@@ -84,3 +84,15 @@ export const getCostByIncomeChart = state => {
     }
   })
 }
+
+export const getMedianDebtByIncome = state => {
+  const medianDebtData = state.data.all.latest.aid.median_debt.income
+  return Object.keys(medianDebtData).map(debt => {
+    if (medianDebtData[debt] !== 0) {
+      return {
+        x: debt,
+        y: medianDebtData[debt]
+      }
+    }
+  })
+}

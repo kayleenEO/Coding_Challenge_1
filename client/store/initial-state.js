@@ -9,48 +9,6 @@ const initialState = {
       zip: ''
     },
     latest: {
-      cost: {
-        net_price: {
-          public: {
-            by_income_level: {
-              '0-48000': 0,
-              '30001-75000': 0,
-              '30001-48000': 0,
-              '75000-plus': 0,
-              '0-30000': 0,
-              '75001-110000': 0,
-              '48001-75000': 0,
-              '110001-plus': 0
-            }
-          }
-        }
-      },
-      student: {
-        demographics: {
-          race_ethnicity: {
-            nhpi: 0,
-            non_resident_alien: 0,
-            black_2000: 0,
-            aian_2000: 0,
-            hispanic_prior_2009: 0,
-            black: 0,
-            asian: 0,
-            api_2000: 0,
-            hispanic_2000: 0,
-            unknown_2000: 0,
-            unknown: 0,
-            white_non_hispanic: 0,
-            black_non_hispanic: 0,
-            asian_pacific_islander: 0,
-            white: 0,
-            two_or_more: 0,
-            hispanic: 0,
-            aian: 0,
-            aian_prior_2009: 0,
-            white_2000: 0
-          }
-        }
-      },
       academics: {
         program_percentage: {
           education: 0,
@@ -93,9 +51,55 @@ const initialState = {
           mechanic_repair_technology: 0
         }
       },
+      student: {
+        demographics: {
+          race_ethnicity: {
+            nhpi: 0,
+            non_resident_alien: 0,
+            black_2000: 0,
+            aian_2000: 0,
+            hispanic_prior_2009: 0,
+            black: 0,
+            asian: 0,
+            api_2000: 0,
+            hispanic_2000: 0,
+            unknown_2000: 0,
+            unknown: 0,
+            white_non_hispanic: 0,
+            black_non_hispanic: 0,
+            asian_pacific_islander: 0,
+            white: 0,
+            two_or_more: 0,
+            hispanic: 0,
+            aian: 0,
+            aian_prior_2009: 0,
+            white_2000: 0
+          }
+        }
+      },
+      cost: {
+        net_price: {
+          public: {
+            by_income_level: {
+              '0-48000': 0,
+              '30001-75000': 0,
+              '30001-48000': 0,
+              '75000-plus': 0,
+              '0-30000': 0,
+              '75001-110000': 0,
+              '48001-75000': 0,
+              '110001-plus': 0
+            }
+          }
+        }
+      },
       aid: {
         median_debt: {
-          income: []
+          income: {
+            '0_30000': 0,
+            '30001_75000': 0,
+            greater_than_75000: 0
+          }
         }
       }
     }
