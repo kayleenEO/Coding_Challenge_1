@@ -73,14 +73,14 @@ export const getEthnicityPieChart = state => {
   }, [])
 }
 
-// export const getEthnicityPieChart = state => {
-//   const demographics = state.data.all.latest.student.demographics.race_ethnicity
-//   return Object.keys(demographics).map(demo => {
-//     if (demographics[demo] !== 0) {
-//       return {
-//         x: demo,
-//         y: demographics[demo]
-//       }
-//     }
-//   })
-// }
+export const getCostByIncomeChart = state => {
+  const incomeData = state.data.all.latest.cost.net_price.public.by_income_level
+  return Object.keys(incomeData).map(income => {
+    if (incomeData[income] !== 0) {
+      return {
+        x: income,
+        y: incomeData[income]
+      }
+    }
+  })
+}

@@ -2,10 +2,12 @@ import React, {Component} from 'react'
 import {
   fetchData,
   getEthnicityPieChart,
-  getProgramPercentagePieChart
+  getProgramPercentagePieChart,
+  getCostByIncomeChart
 } from '../store'
 import {connect} from 'react-redux'
 import PieChart from './program-data-chart'
+import BarChart from './bar-chart'
 
 class Homepage extends Component {
   componentDidMount() {
@@ -16,7 +18,8 @@ class Homepage extends Component {
       data,
       isLoading,
       ethnicityPieChartData,
-      programPercentagePieChartData
+      programPercentagePieChartData,
+      costByIncomeData
     } = this.props
     return (
       <div>
@@ -34,6 +37,9 @@ class Homepage extends Component {
             <br />
             <br />
             <PieChart data={programPercentagePieChartData} />
+            <br />
+            <br />
+            <BarChart data={costByIncomeData} />
           </div>
         )}
       </div>
@@ -45,7 +51,8 @@ const mapState = state => ({
   data: state.data.all,
   isLoading: state.data.isLoading,
   ethnicityPieChartData: getEthnicityPieChart(state),
-  programPercentagePieChartData: getProgramPercentagePieChart(state)
+  programPercentagePieChartData: getProgramPercentagePieChart(state),
+  costByIncomeData: getCostByIncomeChart(state)
 })
 
 const mapDispatch = dispatch => ({
