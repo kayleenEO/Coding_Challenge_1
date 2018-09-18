@@ -6,8 +6,6 @@ import history from './history'
 import store from './store'
 import App from './app'
 import './sass/index.scss'
-
-// establishes socket connection
 import './socket'
 
 ReactDOM.render(

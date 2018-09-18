@@ -2,6 +2,7 @@ import axios from 'axios'
 import initialState from './initial-state'
 
 //ACTION TYPES
+
 const REQUEST_DATA = 'REQUEST_DATA'
 const RECEIVE_DATA = 'RECEIVE_DATA'
 
@@ -28,6 +29,7 @@ export const fetchData = () => async dispatch => {
 }
 
 //REDUCERS
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_DATA:
@@ -47,6 +49,7 @@ export default (state = initialState, action) => {
 }
 
 //SELECTORS
+
 export const getProgramPercentagePieChart = state => {
   const percentage = state.data.all.latest.academics.program_percentage
   return Object.keys(percentage).reduce((result, percent) => {

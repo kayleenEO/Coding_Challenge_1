@@ -52,13 +52,17 @@ class Homepage extends Component {
                       <h2 className="is-size-5 content">
                         <span id="student-num" className="is-size-3">
                           {data.latest.student.size}
-                        </span>{' '}
-                        undergraduates enrolled
+                        </span>
+                        {'  '}
+                        Undergraduates currently enrolled
                       </h2>
                     </div>
                     <div className="column">
                       <div id="header-card" className="card">
-                        <PieChart data={programPercentagePieChartData} />
+                        <PieChart
+                          data={programPercentagePieChartData}
+                          title="Program Percentages"
+                        />
                       </div>
                     </div>
                   </div>
@@ -70,13 +74,19 @@ class Homepage extends Component {
               <div className="container">
                 <div className="columns">
                   <div className="column">
-                    <BarChart data={medianDebtByIncome} />
+                    <BarChart
+                      data={medianDebtByIncome}
+                      title="Median Debt By Income"
+                    />
                   </div>
                   <div className="column">
                     <PieChart data={ethnicityPieChartData} />
                   </div>
                   <div className="column">
-                    <BarChart data={costByIncomeData} />
+                    <BarChart
+                      data={costByIncomeData}
+                      title="Net Price by Income"
+                    />
                   </div>
                 </div>
               </div>

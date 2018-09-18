@@ -23,7 +23,7 @@ const PieChart = ({data}) => {
               ]
         }
         labelRadius={100}
-        padding={{top: 20, bottom: 20, left: 100, right: 100}}
+        padding={{top: 20, bottom: 0, left: 100, right: 100}}
         innerRadius={60}
         style={{
           labels: {fontSize: 12}

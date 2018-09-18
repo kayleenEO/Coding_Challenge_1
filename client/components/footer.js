@@ -9,6 +9,9 @@ const Footer = () => {
           <br />
           <br />
           <p>All Data was obtained from the College ScoreCard API</p>
+          <a href="https://collegescorecard.ed.gov/data/">
+            https://collegescorecard.ed.gov/data/
+          </a>
         </div>
       </div>
     </footer>

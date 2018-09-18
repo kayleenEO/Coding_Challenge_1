@@ -1,6 +1,4 @@
 //Customized Variables
-
-//Initial variable (our color pallete)
 $orange: #f67533;
 $yellow: #ffc107;
 $green: #3ab066;
@@ -8,7 +6,6 @@ $turquoise: #5cbbbc;
 $cyan: #17a2b8;
 $blue: #207ccd;
 $purple: #6f42c1;
-//$purple: #4d2e87;
 $red: #ea443c;
 $pink: #ef706a;
 
@@ -26,15 +23,12 @@ $primary: $turquoise;
 $primary-invert: findColorInvert($primary);
 $secondary: $pink;
 $secondary-invert: findColorInvert($secondary);
+$link: $primary;
 
 $card-shadow: 0;
 $card-shadow-hover: 0 1.75rem 4rem -0.75rem rgba($black, 0.28);
-// 0 0.125rem 0.125rem rgba($black, 0.1);
 
 //Custom SCSS
-// #app {
-//   background-color: ;
-// }
 
 #header-card {
   background-color: transparent;
@@ -47,4 +41,9 @@ $card-shadow-hover: 0 1.75rem 4rem -0.75rem rgba($black, 0.28);
 #footer {
   background-color: transparent;
   color: $primary;
+}
+
+#program-title {
+  color: white;
+  text-align: right;
 }
