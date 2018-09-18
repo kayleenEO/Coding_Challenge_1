@@ -27,10 +27,7 @@ class Homepage extends Component {
       <div>
         {!isLoading && (
           <div>
-            <section
-              id="home-rel"
-              className="hero is-primary is-medium is-bold"
-            >
+            <section id="home-rel" className="hero is-primary is-small is-bold">
               <div className="hero-body">
                 <div id="hero-title" className="container body-center">
                   <div className="columns">
@@ -38,17 +35,32 @@ class Homepage extends Component {
                       <br />
                       <br />
                       <br />
-                      <h1 className="title">{data.school.name}</h1>
-                      <h2 className="subtitle">{data.school.school_url}</h2>
-                      <h2 className="address">{`${data.school.city}, ${
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <h1 className="title is-size-1">{data.school.name}</h1>
+                      <h2 className="subtitle is-size-3">
+                        {data.school.school_url}
+                      </h2>
+                      <br />
+                      <br />
+
+                      <h2 className="is-size-5">{`${data.school.city}, ${
                         data.school.state
                       } ${data.school.zip}`}</h2>
-                      <h2>
-                        {data.latest.student.size} undergraduates enrolled
+                      <h2 className="is-size-5 content">
+                        <span id="student-num" className="is-size-3">
+                          {data.latest.student.size}
+                        </span>{' '}
+                        undergraduates enrolled
                       </h2>
                     </div>
-                    <div className="column is-centered">
-                      <PieChart data={programPercentagePieChartData} />
+                    <div className="column">
+                      <div id="header-card" className="card">
+                        <PieChart data={programPercentagePieChartData} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -58,13 +70,13 @@ class Homepage extends Component {
             <section id="home-bottom-section" className="section">
               <div className="container">
                 <div className="columns">
-                  <div className="column box">
+                  <div className="column">
                     <BarChart data={medianDebtByIncome} />
                   </div>
-                  <div className="column box">
+                  <div className="column">
                     <PieChart data={ethnicityPieChartData} />
                   </div>
-                  <div className="column box">
+                  <div className="column">
                     <BarChart data={costByIncomeData} />
                   </div>
                 </div>
