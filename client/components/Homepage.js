@@ -33,6 +33,7 @@ class Homepage extends Component {
             <h2>City: {data.school.city}</h2>
             <h2>State: {data.school.state}</h2>
             <h2>Zip: {data.school.zip}</h2>
+            <h2>Total # of Students: {data.latest.student.size}</h2>
             <br />
             <br />
             <PieChart data={ethnicityPieChartData} />

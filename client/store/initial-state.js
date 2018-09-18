@@ -52,6 +52,7 @@ const initialState = {
         }
       },
       student: {
+        size: 0,
         demographics: {
           race_ethnicity: {
             nhpi: 0,
