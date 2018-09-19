@@ -34,8 +34,9 @@ To access this code on your local machine, please follow the steps below:
 3.  mkdir Coding_Challenge_for_Kayleen_Offringa
 4.  cd Coding_Challenge_for_Kayleen_Offringa
 5.  git clone https://github.com/kayleenEO/Coding_Challenge_1.git
-6.  Open in your text editor of choice
-7.  npm install
+6.  cd Coding_Challenge_1
+7.  Open in your text editor of choice
+8.  npm install
 
 ## Start
 
